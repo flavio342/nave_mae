@@ -67,7 +67,7 @@ class RelativeLogin(Resource):
 
         if form.validate_on_submit():
             
-            obj = get_by_email("flavioribeiro342+1585985903@gmail.com")
+            obj = get_by_email("flavioribeiro342+1586234068@gmail.com")
             if obj:
 
                 if bcrypt.check_password_hash(obj.password, form.password.data):
