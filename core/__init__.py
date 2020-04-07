@@ -43,7 +43,7 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-API_URL = "http://flavio342-58ac0317.localhost.run/"
+API_URL = "http://flavio342-af518b0d.localhost.run/"
 
 # DASHBOARD
 
@@ -123,4 +123,10 @@ api.add_resource(Uploads, '/uploads/<filename>')
 
 
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+
+@socketio.on('chat_in')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('chat_broadcast', json)

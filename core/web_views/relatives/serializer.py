@@ -1,10 +1,9 @@
 from core import API_URL
 
 def serialize(obj):
-    print("lol")
+    
     students = []
     for s in obj.students:
-        print("hey")
 
         student = {
             "id": s.id,
